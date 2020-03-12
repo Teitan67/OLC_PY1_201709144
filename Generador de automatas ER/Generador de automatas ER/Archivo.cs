@@ -14,6 +14,7 @@ namespace Generador_de_automatas_ER
         private String contenido;
         private String extension;
         private OpenFileDialog buscador;
+        private SaveFileDialog centinela;
         private TextReader lector;
         private TextWriter escritor;
         private Form1 padre;
@@ -26,6 +27,7 @@ namespace Generador_de_automatas_ER
         {
             this.extension = extension;
             this.padre = consola;
+            this.ruta = "";
         }
         //Getters and Setters----------------------------------------------------------
         public String getRuta() { return ruta; }
@@ -50,29 +52,37 @@ namespace Generador_de_automatas_ER
         }
         public void GuardarArchivo(String contenido)
         {
-            if (ExisteArchivo())
+            if (NoExisteArchivo())
+            {
+                centinela = new SaveFileDialog();
+                centinela.Filter = this.extension;
+                if (centinela.ShowDialog() == DialogResult.OK)
+                {
+                    setRuta(centinela.FileName);
+                    this.nombre = centinela.FileName;
+                    padre.consola("Creando ruta...");
+                    GuardarArchivo(contenido);
+                }
+            }
+            else
             {
                 escritor = new StreamWriter(ruta);
                 escritor.WriteLine(contenido);
                 escritor.Close();
-            }
-            else
-            {
-
+                padre.consola("Archivo guardado...");
             }
         }
         public String abrirArchivo(String ruta)
         {
-            
-            lector = new StreamReader(ruta);
-            contenido = lector.ReadToEnd();
-            lector.Close();
+
+            contenido = File.ReadAllText(ruta);
+     
             return contenido;
         }
         public String getNombre() { return this.nombre; }
-        private bool ExisteArchivo ()
+        private bool NoExisteArchivo ()
         {
-            return ruta != ""||ruta!=null;
+            return (ruta.Equals("")||ruta.Equals(null));
         }
 
     }

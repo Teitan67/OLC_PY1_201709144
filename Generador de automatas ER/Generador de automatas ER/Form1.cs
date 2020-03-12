@@ -49,7 +49,7 @@ namespace Generador_de_automatas_ER
 
         private void button3_Click(object sender, EventArgs e)
         {
-            tabControl1.TabPages.Add(new MyTabForm(new Form2(tabControl1,this)));
+            tabControl1.TabPages.Add(new MyTabForm(new Form2("Nuevo Archivo.er",tabControl1,this)));
         }
 
         private void Form1_Load(object sender, EventArgs e)

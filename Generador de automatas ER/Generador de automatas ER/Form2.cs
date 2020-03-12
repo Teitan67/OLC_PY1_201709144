@@ -29,16 +29,15 @@ namespace Generador_de_automatas_ER
                 this.Text = archivo.getNombre();
             }
             
-
         }
-        public Form2(String nombre, TabControl tabControl1, Form1 Padre,String contenido)
+        public Form2(String nombre, TabControl tabControl1, Form1 Padre)
         {
             InitializeComponent();
+            archivo = new Archivo("ER| *.er", Padre);
             this.Text = nombre;
             this.pnl = panel1;
             this.tab = tabControl1;
             this.padre = Padre;
-            this.richTextBox1.Text = contenido;
         }
 
         private void button1_Click(object sender, EventArgs e)
