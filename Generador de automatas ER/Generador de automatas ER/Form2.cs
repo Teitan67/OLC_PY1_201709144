@@ -48,7 +48,6 @@ namespace Generador_de_automatas_ER
         private void button2_Click(object sender, EventArgs e)
         {
             AnalizadorLexico analizador = new AnalizadorLexico(richTextBox1.Text);
-            analizador.analizar();
             padre.consola("Analizando....");
         }
         private void eliminarTab() {

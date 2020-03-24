@@ -14,13 +14,14 @@ namespace Generador_de_automatas_ER
         public int columna;
         public int fila;
 
-        public Token(int id, String token, String lexema, int columna, int fila)
+        public Token(int id, String lexema, int columna, int fila)
         {
             this.id = id;
             this.token = qTokenEs(id);
             this.lexema = lexema;
             this.columna = columna;
             this.fila = fila;
+            Console.WriteLine("ID: " + id + " Token: " + token + " Lexema: " +lexema+" Fila: "+fila+" Columna: "+columna);
         }
 
         String qTokenEs(int id) {
@@ -80,6 +81,9 @@ namespace Generador_de_automatas_ER
                     break;
                 case 17:
                     token = "Punto y coma";
+                    break;
+                default:
+                    token = "Indefinido";
                     break;
             }
             return token;
