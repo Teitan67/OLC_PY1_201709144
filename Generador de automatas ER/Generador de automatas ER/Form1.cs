@@ -72,5 +72,10 @@ namespace Generador_de_automatas_ER
             }
             else { }
         }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            richTextBox1.Text ="";
+        }
     }
 }

@@ -24,7 +24,7 @@ namespace Generador_de_automatas_ER
             Console.WriteLine("ID: " + id + " Token: " + token + " Lexema: " +lexema+" Fila: "+fila+" Columna: "+columna);
         }
 
-        String qTokenEs(int id) {
+        public String qTokenEs(int id) {
             String token = "";
             switch (id)
             {
@@ -81,6 +81,9 @@ namespace Generador_de_automatas_ER
                     break;
                 case 17:
                     token = "Punto y coma";
+                    break;
+                case 18:
+                    token = "Mension de conjunto";
                     break;
                 default:
                     token = "Indefinido";

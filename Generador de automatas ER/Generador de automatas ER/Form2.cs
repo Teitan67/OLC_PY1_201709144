@@ -15,6 +15,7 @@ namespace Generador_de_automatas_ER
         TabControl tab;
         Archivo archivo;
         Form1 padre;
+        AnalizadorLexico analizador;
         public Form2(TabControl tabControl1,Form1 Padre)
         {
             InitializeComponent();
@@ -47,8 +48,10 @@ namespace Generador_de_automatas_ER
 
         private void button2_Click(object sender, EventArgs e)
         {
-            AnalizadorLexico analizador = new AnalizadorLexico(richTextBox1.Text);
-            padre.consola("Analizando....");
+             analizador = new AnalizadorLexico(richTextBox1.Text, padre, this.Text);
+            generarReporteToolStripMenuItem.Enabled = true;
+
+
         }
         private void eliminarTab() {
             tab.TabPages.Remove(tab.SelectedTab);
@@ -62,6 +65,16 @@ namespace Generador_de_automatas_ER
         private void guardarToolStripMenuItem_Click(object sender, EventArgs e)
         {
             archivo.GuardarArchivo(richTextBox1.Text);
+        }
+
+        private void generarReporteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            analizador.generarReporte();
+        }
+
+        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
         }
     }
 }
